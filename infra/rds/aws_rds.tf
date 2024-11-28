@@ -16,7 +16,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_security_group" "banco_sg" {
+resource "aws_security_group" "banco_sg_payments" {
     name        = "banco_sg"
     description = "Security Group for DB MySql"
       ingress {
@@ -47,7 +47,7 @@ resource "aws_db_instance" "banco" {
     skip_final_snapshot  = true
     publicly_accessible  = true
     port                 = 3306
-    vpc_security_group_ids = [aws_security_group.banco_sg.id]
+    vpc_security_group_ids = [aws_security_group.banco_sg_payments.id]
     tags = {
       Name = "rdsDB"
     }
