@@ -28,8 +28,8 @@ resource "aws_db_instance" "banco" {
     skip_final_snapshot  = true
     publicly_accessible  = true
     port                 = 3306
-    vpc_security_group_ids = [aws_security_group.banco_sg.id]
-    db_subnet_group_name   = [aws_db_subnet_group.subnetPayments.name]
+    vpc_security_group_ids = aws_security_group.banco_sg.id
+    db_subnet_group_name   = aws_db_subnet_group.subnet_payments.name
     lifecycle {
       ignore_changes = [snapshot_identifier]
     }
@@ -38,7 +38,7 @@ resource "aws_db_instance" "banco" {
     }
 }
 
-resource "aws_db_subnet_group" "subnetPayments" {
+resource "aws_db_subnet_group" "subnet_payments" {
   name        = "my-db-subnet-group"
   subnet_ids = [aws_subnet.public_a.id, aws_subnet.public_b.id]
 }
