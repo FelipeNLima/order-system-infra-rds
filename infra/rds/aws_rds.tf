@@ -47,7 +47,7 @@ resource "aws_db_instance" "banco" {
     skip_final_snapshot  = true
     publicly_accessible  = true
     port                 = 3306
-    vpc_security_group_ids = ["vpc-05ebd62f2c19c724c"]
+    vpc_security_group_ids = [aws_security_group.banco_sg.id]
     tags = {
       Name = "rdsDB"
     }
