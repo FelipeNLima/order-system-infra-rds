@@ -31,6 +31,7 @@ resource "aws_security_group" "banco_sg" {
       protocol    = "-1"
       cidr_blocks = ["0.0.0.0/0"]
     }
+    vpc_id      = "vpc-0ceacc2fa46f9b029"
 }
 
 resource "aws_db_instance" "banco" {
