@@ -16,7 +16,7 @@ provider "aws" {
 }
 
 resource "aws_security_group" "banco_sg" {
-    name        = "banco_sg"  
+    name        = "banco_sg"
     description = "Security Group for DB MySql"
       ingress {
       description = "MYSQL/Aurora"
@@ -31,7 +31,6 @@ resource "aws_security_group" "banco_sg" {
       protocol    = "-1"
       cidr_blocks = ["0.0.0.0/0"]
     }
-    vpc_id      = "vpc-0ceacc2fa46f9b029"
 }
 
 resource "aws_db_instance" "banco" {
@@ -48,6 +47,9 @@ resource "aws_db_instance" "banco" {
     publicly_accessible  = true
     port                 = 3306
     vpc_security_group_ids = [aws_security_group.banco_sg.id]
+    lifecycle {
+      ignore_changes = [snapshot_identifier]
+    }
     tags = {
       Name = "rdsDB"
     }
