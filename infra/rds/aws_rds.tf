@@ -37,7 +37,7 @@ resource "aws_security_group" "banco_sg_products" {
 resource "aws_db_instance" "banco" {
     allocated_storage    = 10
     db_name              = "dbMySqlProducts"
-    identifier           = "dbProducts"
+    identifier           = "dbproducts"
     engine               = "mysql"
     engine_version       = "8.0"
     instance_class       = "db.t3.micro"
