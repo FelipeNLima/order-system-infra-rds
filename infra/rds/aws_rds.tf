@@ -39,7 +39,7 @@ resource "aws_db_instance" "banco" {
 }
 
 resource "aws_db_subnet_group" "subnet_payments" {
-  name        = "my-db-subnet-group"
+  name        = "payments-db-subnet-group"
   subnet_ids = [aws_subnet.public_a.id, aws_subnet.public_b.id]
 }
 
