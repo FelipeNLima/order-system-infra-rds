@@ -16,8 +16,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_security_group" "banco_sg_products" {
-    name        = "banco_sg_products"
+resource "aws_security_group" "banco_sg" {
+    name        = "banco_sg"
     description = "Security Group for DB MySql"
       ingress {
       description = "MYSQL/Aurora"
@@ -36,18 +36,18 @@ resource "aws_security_group" "banco_sg_products" {
 
 resource "aws_db_instance" "banco" {
     allocated_storage    = 10
-    db_name              = "dbMySqlProducts"
-    identifier           = "dbproducts"
+    db_name              = "dbMySqlPayments"
+    identifier           = "dbpayments"
     engine               = "mysql"
     engine_version       = "8.0"
     instance_class       = "db.t3.micro"
-    username             = "msproducts"
-    password             = "Fiap24msproducts"
+    username             = var.db_username
+    password             = var.db_password
     parameter_group_name = "default.mysql8.0"
     skip_final_snapshot  = true
     publicly_accessible  = true
     port                 = 3306
-    vpc_security_group_ids = [aws_security_group.banco_sg_products.id]
+    vpc_security_group_ids = [aws_security_group.banco_sg.id]
     tags = {
       Name = "rdsDB"
     }
