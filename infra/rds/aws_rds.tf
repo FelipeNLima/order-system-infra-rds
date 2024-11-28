@@ -17,7 +17,7 @@ provider "aws" {
 }
 
 resource "aws_security_group" "banco_sg" {
-    name        = "banco_sg"
+    name        = "banco_sg"  
     description = "Security Group for DB MySql"
       ingress {
       description = "MYSQL/Aurora"
