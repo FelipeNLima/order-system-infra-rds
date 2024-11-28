@@ -14,3 +14,9 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "db_name" {
+  description = "The Name data base for the RDS instance"
+  type        = string
+  sensitive   = true
+}
