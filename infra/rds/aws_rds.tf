@@ -35,7 +35,7 @@ resource "aws_security_group" "banco_sg" {
 
 resource "aws_db_instance" "banco" {
     allocated_storage    = 10
-    db_name              = var.db_name
+    db_name              = "dbMySqlPayments"
     identifier           = "db"
     engine               = "mysql"
     engine_version       = "8.0"
